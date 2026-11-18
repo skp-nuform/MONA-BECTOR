@@ -1,0 +1,592 @@
+---
+// Mona Bector, one-page portfolio. Facts: her LinkedIn (read 2026-11-18) and the Portland Press Herald (2018)
+// for the New York State role and education. Photographs: Wikimedia Commons, credited in the footer.
+const linkedin = 'https://www.linkedin.com/in/monabector/';
+const Y0 = 2014, Y1 = 2027, SPAN = Y1 - Y0;
+const pos = (s: number, e: number) => `left:${((s - Y0) / SPAN) * 100}%;width:${((e - s) / SPAN) * 100}%`;
+const at = (t: number) => `left:${((t - Y0) / SPAN) * 100}%`;
+const years = Array.from({ length: SPAN + 1 }, (_, i) => Y0 + i);
+const TODAY = 2026.88;
+
+type Bar = { id: string; lane: 'public' | 'enterprise'; row: number; s: number; e: number; label: string; title: string; org: string; years: string; desc: string };
+const bars: Bar[] = [
+  { id: 'nys', lane: 'public', row: 0, s: 2014, e: 2017, label: 'NY State · Deputy Commissioner', title: 'Deputy Commissioner, Workforce and Talent Management', org: 'New York State Office for People With Developmental Disabilities', years: '2014 – 2016', desc: 'Senior leadership of workforce and talent management for a state agency.' },
+  { id: 'ct', lane: 'public', row: 0, s: 2021, e: 2022, label: 'Conn.', title: 'Strategy and Organizational Change Manager', org: 'State of Connecticut, through North Highland', years: '2021', desc: 'Led change-management workstream planning for the update of the state’s Medicaid system: leadership strategy, leadership communications and stakeholder engagement.' },
+  { id: 'epa', lane: 'public', row: 1, s: 2022, e: 2024, label: 'US EPA · Change lead', title: 'Organization Change Management Lead', org: 'US Environmental Protection Agency, through The Cadmus Group', years: '2022 – 2023', desc: 'Drove the digital transformation strategy through leadership workshops, strategy sessions, a change-readiness assessment, stakeholder engagement and communications.' },
+  { id: 'doi', lane: 'public', row: 0, s: 2024, e: 2026, label: 'Interior · PMO lead', title: 'Senior Program Manager, PMO Lead', org: 'US Department of the Interior, Bureau of Indian Affairs', years: '2024 – 2025', desc: 'Established and managed the PMO, led change and transition initiatives, and managed stakeholders and project teams.' },
+  { id: 'zoll', lane: 'enterprise', row: 0, s: 2020, e: 2021, label: 'ZOLL', title: 'Program Lead, Organization Change Management', org: 'ZOLL Medical Corporation', years: '2020', desc: 'Developed the implementation plan for Microsoft Teams, SharePoint, OneDrive and Intune.' },
+  { id: 'ikasi', lane: 'enterprise', row: 1, s: 2020, e: 2022, label: 'IKASI', title: 'Strategic Advisor', org: 'IKASI', years: '2020 – 2021', desc: 'Strategic product and marketing advice.' },
+  { id: 'ey', lane: 'enterprise', row: 0, s: 2021, e: 2022, label: 'EY', title: 'Organizational Change Manager', org: 'EY', years: '2021', desc: 'Recommendations for an internal organization design and restructuring initiative.' },
+  { id: 'pfizer', lane: 'enterprise', row: 2, s: 2021, e: 2022, label: 'Pfizer', title: 'Change Management Consultant', org: 'Pfizer, Global Product Development', years: '2021', desc: 'Strategic initiatives team: internationalization of clinical trial studies.' },
+  { id: 'cbts', lane: 'enterprise', row: 3, s: 2021, e: 2023, label: 'CBTS', title: 'Program Director, Organizational Digital Transformation', org: 'CBTS, for the University of Cincinnati', years: '2021 – 2022', desc: 'Developed the digital transformation and organizational change-management strategy.' },
+  { id: 'bae', lane: 'enterprise', row: 0, s: 2022, e: 2025, label: 'BAE Systems · Change manager', title: 'Senior Organizational Change Manager', org: 'BAE Systems', years: '2022 – 2024', desc: 'Led digital transformation for enterprise-wide system implementations and built change-management capability inside the enterprise PMO.' },
+  { id: 'leidos', lane: 'enterprise', row: 1, s: 2026, e: 2026.58, label: 'Leidos', title: 'Digital Transformation Lead, Enterprise Transformation Office', org: 'Leidos, Reston, Virginia', years: 'Jan – Jul 2026', desc: 'Orchestrated enterprise-wide digital transformation with a primary focus on accelerating AI adoption across the organization.' },
+];
+type Mile = { id: string; t: number; label: string; title: string; org: string; when: string; major?: boolean };
+const miles: Mile[] = [
+  { id: 'prosci', t: 2020.7, label: 'Prosci', title: 'Integrating Agile and Change Management', org: 'Prosci', when: 'September 2020', major: true },
+  { id: 'ccmp', t: 2021.85, label: 'CCMP', title: 'Certified Change Management Professional', org: 'Association of Change Management Professionals', when: 'November 2021', major: true },
+  { id: 'safe', t: 2023.05, label: 'SAFe', title: 'Certified SAFe 5 Practitioner', org: 'Scaled Agile', when: 'January 2023' },
+  { id: 'pmp', t: 2023.6, label: 'PMP', title: 'Project Management Professional', org: 'Project Management Institute', when: 'August 2023, valid to 2029', major: true },
+  { id: 'genai', t: 2024.5, label: 'Gen AI', title: 'Change Management for Generative AI', org: 'Vanderbilt University', when: 'July 2024', major: true },
+  { id: 'pmi24', t: 2024.75, label: '', title: 'Generative AI Overview for Project Managers', org: 'Project Management Institute', when: 'September 2024' },
+  { id: 'mcmp', t: 2025.3, label: 'MCMP', title: 'Master Change Management Professional', org: 'Association of Change Management Professionals', when: 'April 2025', major: true },
+  { id: 'pmi25', t: 2025.85, label: '', title: 'Practical Application of Gen AI for Project Managers, and Data Landscape of GenAI for Project Managers (two certificates)', org: 'Project Management Institute', when: 'November 2025' },
+];
+// LinkedIn lists ten certifications; nine are dated (two share November 2025) and CAPM has no date, so it appears in the list only.
+const first = bars.find((b) => b.id === 'leidos')!;
+
+const ph = (id: string, w: number, h: number, sizes = '(max-width: 760px) 100vw, 50vw') => ({
+  src: `/img/photo-${id}-960.webp`,
+  srcset: `/img/photo-${id}-500.webp 500w, /img/photo-${id}-960.webp 960w` + (id === 'f174871970' ? '' : `, /img/photo-${id}.webp 1280w`),
+  width: w, height: h, sizes,
+});
+const places = [
+  { img: ph('f73290589', 1280, 853), alt: 'The Assembly chamber of the New York State Capitol', place: 'Deputy Commissioner', what: 'New York State', when: '2014 – 2016', bar: 'nys' },
+  { img: ph('f74279369', 1280, 962), alt: 'The curved stone front of the US Environmental Protection Agency headquarters', place: 'Change management lead', what: 'US EPA', when: '2022 – 2023', bar: 'epa' },
+  { img: ph('f8887409', 1280, 776), alt: 'The US Department of the Interior building, seen from the street', place: 'PMO lead', what: 'Department of the Interior', when: '2024 – 2025', bar: 'doi' },
+  { img: ph('f29654577', 1280, 857), alt: 'The Leidos headquarters towers in Reston, Virginia, seen from below', place: 'Reston, Virginia', what: 'Leidos', when: '2026', bar: 'leidos' },
+  { img: ph('f174871970', 960, 640), alt: 'Nyenrode castle, home of Nyenrode Business University, behind summer trees', place: 'Breukelen, Netherlands', what: 'Nyenrode Business University', when: 'Master’s degree', bar: '' },
+];
+const welders = ph('f16463746', 1280, 853, '(max-width: 760px) 100vw, 40vw');
+const plant = ph('f198859757', 1280, 962, '100vw');
+
+const packages = [
+  { name: 'Transformation PMO', does: 'Set up and run the office that tracks every project, its owner, budget and risks.', at: [['doi', 'Interior, BIA'], ['bae', 'BAE Systems']] },
+  { name: 'AI adoption', does: 'Turn AI training into everyday use, team by team, with the change support people need.', at: [['leidos', 'Leidos'], ['genai', 'Vanderbilt Gen AI']] },
+  { name: 'Readiness and leadership alignment', does: 'Readiness assessments, leadership workshops and strategy sessions before anything goes live.', at: [['epa', 'US EPA'], ['ct', 'Connecticut']] },
+  { name: 'Enterprise system rollouts', does: 'Change plans, communications and training that move people onto new systems.', at: [['bae', 'BAE Systems'], ['zoll', 'ZOLL Medical'], ['cbts', 'University of Cincinnati']] },
+  { name: 'Organization design', does: 'Structure and restructuring recommendations, and global initiatives across functions.', at: [['ey', 'EY'], ['pfizer', 'Pfizer']] },
+];
+const phases = [
+  { id: 'assess', name: 'Assess', line: 'Find out where people are ready and where they will resist.', items: ['Organizational change-readiness assessment', 'Organization design and restructuring recommendations'], seen: 'US EPA, EY' },
+  { id: 'align', name: 'Align', line: 'Get leaders to own the change before it reaches their teams.', items: ['Leadership workshops and strategy sessions', 'Leadership strategic plan and communications', 'Stakeholder engagement'], seen: 'US EPA, State of Connecticut' },
+  { id: 'deliver', name: 'Deliver', line: 'Run the rollout as a program, with one office holding the plan.', items: ['PMO set-up and management', 'Implementation plan for Teams, SharePoint, OneDrive and Intune', 'Stakeholder and project-team management'], seen: 'Department of the Interior, ZOLL Medical' },
+  { id: 'embed', name: 'Embed', line: 'Leave the organization able to run the next change itself.', items: ['Change-management capability built inside the enterprise PMO', 'Enterprise-wide AI adoption'], seen: 'BAE Systems, Leidos' },
+];
+const langs = [
+  { name: 'English', level: 5, note: 'Native' },
+  { name: 'Hindi', level: 4, note: 'Full professional' },
+  { name: 'Urdu', level: 3, note: 'Professional working' },
+  { name: 'Dutch', level: 1, note: 'Elementary' },
+  { name: 'Spanish', level: 1, note: 'Elementary' },
+];
+const credits = [
+  ['Navya Sriramaneni', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0', 'https://commons.wikimedia.org/wiki/File:New_York_State_Capitol,_Albany_New_York.jpg'],
+  ['Moreau1', 'Public domain', '', 'https://commons.wikimedia.org/wiki/File:EPA_HQ_-_WJ_Clinton_Building_-_Main_entrance_-_2018d.jpg'],
+  ['MBisanz talk', 'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0', 'https://commons.wikimedia.org/wiki/File:Department_of_the_Interior_by_Matthew_Bisanz.JPG'],
+  ['Jarek Tuszyński', 'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0', 'https://commons.wikimedia.org/wiki/File:Leidos_Headquarters_in_Reston_-_2013.JPG'],
+  ['Choinowski', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0', 'https://commons.wikimedia.org/wiki/File:Kasteel_Nijenrode_2015.jpg'],
+  ['Jukka Isokoski', 'CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0', 'https://commons.wikimedia.org/wiki/File:Constructing_natural_gas_pipe,_Finland.jpg'],
+  ['Rehman Abubakr', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0', 'https://commons.wikimedia.org/wiki/File:BPCLrefinery-Kochi-4Sep2026_(5).jpg'],
+];
+const laneName = { public: 'Public sector', enterprise: 'Enterprise and consulting' } as const;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mona Bector · Digital transformation and change programs</title>
+<meta name="description" content="Mona Bector leads digital transformation and change-management programs in government and enterprise, from PMO set-up to AI adoption. PMP, MCMP, CCMP.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mona Bector · Digital transformation and change programs">
+<meta property="og:description" content="Twelve years of programs on one roadmap: New York State, the US EPA, the Department of the Interior, BAE Systems and Leidos.">
+<meta property="og:image" content="/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f7f8f6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+<script is:inline>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('motion');setTimeout(()=>document.documentElement.classList.add('drawn'),2600)}</script>
+<style is:global>
+:root{
+  --paper:#f7f8f6; --grid:#e6e8e4; --grid-strong:#d5d8d3; --ink:#1a1d23; --ink-2:#3d434d; --ink-3:#5b626d;
+  --public:#0f766e; --public-soft:#d5ebe8; --enterprise:#a15c07; --enterprise-soft:#f3e4cf; --cred:#1d4ed8; --cred-soft:#dbe4fb;
+  --rule:#c9cdc7; --r:6px; --wrap:1280px; --gut:clamp(20px,4vw,80px);
+  --ease:cubic-bezier(.16,1,.3,1);
+  font-family:'Public Sans',system-ui,sans-serif; color:var(--ink); background:var(--paper);
+  font-variant-numeric:tabular-nums; -webkit-font-smoothing:antialiased;
+}
+*{box-sizing:border-box} html,body{margin:0} html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;line-height:1.55;font-size:17px}
+::selection{background:var(--cred);color:#fff}
+:focus-visible{outline:2px solid var(--cred);outline-offset:3px;border-radius:2px}
+html{scrollbar-color:var(--ink-3) var(--paper)}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+button{font:inherit;color:inherit}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.025em;text-wrap:balance}
+p{margin:0}
+.wrap{width:min(100% - 2*var(--gut),var(--wrap));margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 14px;z-index:50;border-radius:var(--r)}
+.skip:focus{top:12px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:var(--r);background:var(--ink);color:#fff;font-weight:600;font-size:16px;text-decoration:none;transition:background .2s var(--ease),transform .2s var(--ease)}
+.btn svg{width:16px;height:16px;transition:transform .25s var(--ease)}
+.btn:hover{background:#000}.btn:hover svg{transform:translateX(3px)}.btn:active{transform:translateY(1px)}
+.btn--sm{height:40px;padding:0 14px;font-size:15px}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(247,248,246,.94);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:600;font-size:17px}
+.mono{display:grid;place-items:center;width:34px;height:34px;border-radius:5px;background:var(--ink);color:var(--paper);font-size:13px;font-weight:700;letter-spacing:.02em}
+.top nav{display:flex;gap:28px;font-size:15px}
+.top nav a{text-decoration:none;color:var(--ink-2);padding:6px 0;background:linear-gradient(var(--ink),var(--ink)) left bottom/0 1px no-repeat;transition:background-size .3s var(--ease),color .2s}
+.top nav a:hover{color:var(--ink);background-size:100% 1px}
+@media (max-width:860px){.top nav{display:none}}
+.btn{white-space:nowrap}
+.swipe{display:none;font-size:13px;color:var(--ink-3);width:100%}
+@media (max-width:560px){
+  .brand__name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .rm .rm__grid{grid-template-columns:1fr;min-width:760px}
+  .rm .axis-name{display:none}
+  .rm .lane-name{flex-direction:row;align-items:baseline;gap:10px;padding:14px 12px 8px;width:max-content;background:#fff;border-top:0}
+  .rm .lane-name small{font-size:12px}
+  .swipe{display:block}
+}
+
+/* hero */
+.hero{padding:36px 0 40px}
+.hero__head{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:end}
+.hero h1{font-size:clamp(44px,5.4vw,78px);line-height:.96;letter-spacing:-.04em;font-weight:600}
+.hero h1 span{display:block;font-weight:300}
+.hero__lead{font-size:20px;line-height:1.5;color:var(--ink-2);max-width:46ch}
+.hero__cta{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:24px}
+.creds-line{font-size:14px;color:var(--ink-3);letter-spacing:.01em}
+@media (max-width:860px){.hero__head{grid-template-columns:1fr;gap:20px}}
+
+/* roadmap */
+.rm{margin-top:28px;background:#fff;border:1.5px solid var(--ink);border-radius:2px}
+.rm__bar{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--rule)}
+.rm__title{font-size:15px;font-weight:600}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--rule);border-radius:999px;background:#fff;font:500 14px 'Public Sans',sans-serif;color:var(--ink-2);cursor:pointer;transition:border-color .2s,background .2s}
+.chip i{width:10px;height:10px;border-radius:2px;background:var(--c,var(--ink))}
+.chip[data-lane=cred] i{transform:rotate(45deg) scale(.85)}
+.chip[aria-pressed=true]{border-color:var(--ink);color:var(--ink);background:#f1f2ef}
+.chip:hover{border-color:var(--ink-3)}
+.rm__scroll{overflow-x:auto;scrollbar-width:thin}
+.rm__grid{display:grid;grid-template-columns:168px 1fr;min-width:920px}
+.lane-name{padding:14px 18px;font-size:14px;font-weight:600;border-top:1px solid var(--grid-strong);position:sticky;left:0;background:#fff;z-index:3;display:flex;flex-direction:column;gap:4px}
+.lane-name small{font-weight:400;color:var(--ink-3);font-size:13px}
+.axis-name{border-top:0}
+.plot{position:relative;border-top:1px solid var(--grid-strong);background-image:linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:calc(100% / 13) 100%}
+.axis{height:36px;border-top:0;font-size:13px;color:var(--ink-3)}
+.axis span{position:absolute;top:10px;transform:translateX(6px)}
+.lane--public{height:96px}.lane--enterprise{height:156px}.lane--cred{height:100px}
+.bar{position:absolute;height:30px;top:calc(12px + var(--row) * 36px);border:0;border-radius:4px;padding:0 9px;font:600 13px/30px 'Public Sans',sans-serif;color:#fff;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;background:var(--c);transform-origin:left center;transition:filter .2s,box-shadow .2s,opacity .25s,transform .25s var(--ease)}
+.bar--public{--c:var(--public)}.bar--enterprise{--c:var(--enterprise)}
+.bar.is-hit,.bar:hover{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--c)}
+.bar[aria-pressed=true]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ink)}
+.bar--live{background:repeating-linear-gradient(135deg,var(--c) 0 8px,color-mix(in srgb,var(--c) 82%,#fff) 8px 16px)}
+.early{position:absolute;left:8px;top:52px;width:calc(300% / 13 - 16px);font-size:12.5px;color:var(--ink-3);line-height:1.35;margin:0}
+.bar{z-index:1}
+.mile{position:absolute;top:22px;transform:translateX(-50%);border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font:600 12px 'Public Sans',sans-serif;color:var(--cred)}
+.mile b{width:14px;height:14px;background:var(--cred);transform:rotate(45deg);border-radius:2px;transition:transform .25s var(--ease)}
+.mile--minor b{width:10px;height:10px;background:#fff;border:2px solid var(--cred)}
+.mile:hover b,.mile[aria-pressed=true] b{transform:rotate(45deg) scale(1.35)}
+.mile[aria-pressed=true]{color:var(--ink)}
+.today{position:absolute;top:0;bottom:0;width:0;border-left:2px dashed var(--ink);z-index:2;pointer-events:none}
+.plot .today--tag em{top:auto;bottom:8px}
+.today em{position:absolute;top:7px;right:6px;font:600 12px 'Public Sans',sans-serif;font-style:normal;background:var(--ink);color:#fff;padding:3px 7px;border-radius:3px;white-space:nowrap}
+.axis .today{border-left-style:solid}
+.cursor{position:absolute;top:0;bottom:0;width:0;border-left:1px solid var(--ink);opacity:0;pointer-events:none;z-index:4;transition:opacity .15s}
+.bar--out{overflow:visible;color:transparent}
+.bar--out::after{content:attr(data-label);position:absolute;right:calc(100% + 8px);top:0;color:var(--c)}
+.cursor span{position:absolute;top:7px;left:-24px;width:48px;text-align:center;font:600 12px 'Public Sans',sans-serif;background:var(--ink);color:#fff;border-radius:3px;padding:3px 0}
+.rm__plots{position:relative}
+.rm__plots.has-cursor .cursor{opacity:1}
+.rm[data-filter=public] .bar--enterprise,.rm[data-filter=public] .mile,.rm[data-filter=enterprise] .bar--public,.rm[data-filter=enterprise] .mile,.rm[data-filter=cred] .bar{opacity:.18}
+.detail{display:grid;grid-template-columns:200px 1fr auto;gap:8px 32px;align-items:start;padding:20px 18px 22px;border-top:1px solid var(--rule);min-height:118px}
+.detail__meta{font-size:14px;color:var(--ink-3);display:flex;flex-direction:column;gap:4px}
+.detail__meta b{color:var(--ink);font-size:15px}
+.detail__lane{display:inline-flex;align-items:center;gap:8px}.detail__lane i{width:10px;height:10px;border-radius:2px;background:var(--c)}
+.detail h3{font-size:22px;line-height:1.25}
+.detail p{color:var(--ink-2);margin-top:6px;max-width:68ch}
+.detail__org{font-size:15px;color:var(--ink-3);margin-top:2px}
+.hint{font-size:13px;color:var(--ink-3);max-width:22ch;text-align:right}
+@media (max-width:860px){.detail{grid-template-columns:1fr}.hint{display:none}}
+html.motion .bar{animation:draw .9s var(--ease) both;animation-delay:calc(.25s + var(--d) * 70ms)}
+html.motion .mile{animation:pop .5s var(--ease) both;animation-delay:calc(.9s + var(--d) * 60ms)}
+html.drawn .bar,html.drawn .mile{animation:none}
+@keyframes draw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes pop{from{opacity:0;transform:translateX(-50%) translateY(6px)}to{opacity:1;transform:translateX(-50%)}}
+
+/* sections */
+section{padding:120px 0}
+.sec-head{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:end;margin-bottom:48px}
+.sec-head h2{font-size:clamp(34px,4vw,56px);line-height:1.02}
+.sec-head p{color:var(--ink-2);font-size:19px;max-width:52ch}
+@media (max-width:860px){section{padding:80px 0}.sec-head{grid-template-columns:1fr;gap:16px}}
+
+/* work packages */
+.wbs{border-top:2px solid var(--ink)}
+.pkg{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,4fr);gap:32px;padding:26px 0;border-bottom:1px solid var(--rule);align-items:baseline;background:linear-gradient(90deg,rgba(26,29,35,.035),rgba(26,29,35,0)) left/0 100% no-repeat;transition:background-size .5s var(--ease)}
+.pkg:hover{background-size:100% 100%}
+.pkg h3{font-size:24px;display:flex;gap:16px;align-items:baseline}
+.wbs-code{font-size:15px;font-weight:500;color:var(--ink-3);font-variant-numeric:tabular-nums;min-width:2.4em}
+.pkg p{color:var(--ink-2)}
+.pkg ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tag{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 11px;border-radius:4px;border:1px solid var(--rule);background:#fff;font:500 14px 'Public Sans',sans-serif;color:var(--ink);cursor:pointer;transition:border-color .2s,transform .2s var(--ease)}
+.tag i{width:9px;height:9px;border-radius:2px;background:var(--c)}
+.tag:hover{border-color:var(--ink);transform:translateY(-1px)}
+@media (max-width:860px){.pkg{grid-template-columns:1fr;gap:10px}}
+
+/* method */
+.method{background:var(--ink);color:#eef0ec;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px}
+.method .sec-head p{color:#c3c8c0}
+.method__body{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:stretch}
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:28px}
+.phase{position:relative;height:56px;border:0;border-radius:4px;background:#2a2e36;color:#c3c8c0;font:600 16px 'Public Sans',sans-serif;cursor:pointer;text-align:left;padding:0 16px;overflow:hidden;transition:color .2s}
+.phase::before{content:'';position:absolute;inset:0;background:var(--cred);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.phase span{position:relative}
+.phase[aria-selected=true]{color:#fff}.phase[aria-selected=true]::before{transform:scaleX(1)}
+.phase:hover{color:#fff}
+.phase-panel h3{font-size:30px;line-height:1.2;max-width:24ch}
+.phase-panel ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.phase-panel li{display:flex;gap:12px;align-items:center;font-size:18px}
+.phase-panel li::before{content:'';width:10px;height:10px;transform:rotate(45deg);border:2px solid #8fa8f5;flex:none}
+.phase-panel .seen{margin-top:24px;font-size:15px;color:#aab0bc}
+.method__photo{position:relative;border-radius:8px;overflow:hidden;min-height:420px;background:var(--cred)}
+.method__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(1.15);mix-blend-mode:luminosity;opacity:.85}
+@media (max-width:860px){.method__body{grid-template-columns:1fr}.method__photo{min-height:280px}.phases{grid-template-columns:repeat(2,1fr)}}
+
+/* places */
+.places{display:flex;gap:6px;height:520px}
+.place{position:relative;flex:1;min-width:0;border-radius:8px;overflow:hidden;background:var(--public);transition:flex-grow .6s var(--ease);cursor:pointer;border:0;padding:0;text-align:left;color:#fff}
+.place img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);mix-blend-mode:multiply;transition:filter .6s var(--ease),mix-blend-mode .6s}
+.place:nth-child(2),.place:nth-child(3){background:var(--public)}
+.place:nth-child(4){background:var(--enterprise)}.place:nth-child(5){background:var(--cred)}
+.place .cap{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(10,12,16,.82));display:flex;flex-direction:column;gap:2px}
+.place .cap b{font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.place .cap span{font-size:14px;opacity:.88;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.place:not(.is-open) .cap{top:0;bottom:auto;height:100%;justify-content:flex-end;background:linear-gradient(transparent 55%,rgba(10,12,16,.7))}
+.place:not(.is-open) .cap b{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;overflow:visible;font-size:18px}
+.place:not(.is-open) .cap span{display:none}
+.place.is-open{flex-grow:4}
+.place.is-open img{filter:none;mix-blend-mode:normal}
+@media (max-width:860px){.places{flex-direction:column;height:auto}.place{flex:none;height:120px}.place.is-open{height:280px}.place:not(.is-open) .cap b{writing-mode:horizontal-tb;transform:none}.place:not(.is-open) .cap span{display:block}}
+
+/* credentials */
+.cred-grid{display:grid;grid-template-columns:7fr 5fr;gap:64px}
+.certs{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.certs li{display:grid;grid-template-columns:22px 1fr auto;gap:14px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule)}
+.certs li::before{content:'';width:11px;height:11px;transform:rotate(45deg) translateY(-1px);background:var(--cred);border-radius:2px}
+.certs li.minor::before{background:#fff;border:2px solid var(--cred);width:8px;height:8px}
+.certs b{font-weight:600}.certs small{display:block;color:var(--ink-3);font-size:14px}
+.certs time{color:var(--ink-3);font-size:15px}
+.langs h3,.edu h3{font-size:20px;margin-bottom:16px}
+.lang{display:grid;grid-template-columns:90px 1fr;gap:16px;align-items:center;padding:10px 0}
+.lang b{font-weight:600}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.scale i{height:10px;border-radius:2px;background:var(--grid-strong)}
+.scale i.on{background:var(--cred)}
+.lang small{grid-column:2;color:var(--ink-3);font-size:13px;margin-top:-6px}
+.edu{margin-top:40px}
+.edu p{color:var(--ink-2);margin-top:8px}
+@media (max-width:860px){.cred-grid{grid-template-columns:1fr;gap:48px}}
+
+/* about */
+.about{display:grid;grid-template-columns:4fr 8fr;gap:64px;align-items:start}
+.portrait{aspect-ratio:4/5;border-radius:10px;background:var(--public-soft);background-image:repeating-linear-gradient(135deg,rgba(15,118,110,.14) 0 2px,transparent 2px 12px);display:grid;place-items:center;border:1px solid var(--rule)}
+.portrait span{font-size:clamp(64px,8vw,120px);font-weight:300;letter-spacing:-.04em;color:#0b5a54}
+.about blockquote{margin:0;font-size:clamp(22px,2.2vw,30px);line-height:1.4;letter-spacing:-.012em;font-weight:400;max-width:34ch}
+.about .open{margin-top:32px;padding-top:24px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;color:var(--ink-2)}
+.about .open b{color:var(--ink);font-weight:600;margin-right:4px}
+@media (max-width:860px){.about{grid-template-columns:1fr;gap:32px}.portrait{max-width:320px}}
+
+/* close */
+.close{position:relative;color:#fff;padding:0;overflow:hidden;background:var(--ink)}
+.close img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);mix-blend-mode:luminosity;opacity:.34}
+.close .wrap{position:relative;padding:120px 0}
+.close h2{font-size:clamp(40px,5.4vw,80px);line-height:1;max-width:14ch}
+.next{margin:48px 0 40px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.35);position:relative;height:84px}
+.next span{font-size:13px;color:#c8ccc6;padding-top:8px;border-left:1px solid rgba(255,255,255,.18);padding-left:6px}
+.next .plan{position:absolute;left:25%;right:0;top:36px;height:34px;border:2px dashed #fff;border-radius:4px;display:flex;align-items:center;padding:0 12px;font-weight:600;font-size:15px;background:rgba(255,255,255,.06)}
+.close .btn{background:#fff;color:var(--ink)}.close .btn:hover{background:#e9ecf3}
+.close p.lead{font-size:19px;color:#d4d7d2;max-width:52ch;margin-top:20px}
+
+footer{padding:40px 0 56px;font-size:14px;color:var(--ink-3)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between}
+footer details summary{cursor:pointer}
+footer ul{margin:10px 0 0;padding-left:18px;max-width:70ch}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#main"><span class="mono" aria-hidden="true">MB</span><span class="brand__name">Mona Bector</span></a>
+    <nav aria-label="Sections"><a href="#roadmap">Roadmap</a><a href="#work">Work</a><a href="#method">Method</a><a href="#credentials">Credentials</a><a href="#about">About</a></nav>
+    <a class="btn btn--sm" href={linkedin} rel="noopener">Contact me on LinkedIn</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero wrap" id="roadmap">
+    <div class="hero__head">
+      <h1>Mona Bector<span>runs change programs</span></h1>
+      <div>
+        <p class="hero__lead">I lead digital transformation and change management for government and enterprise, from setting up the PMO to getting AI into everyday work. 25 years in.</p>
+        <div class="hero__cta">
+          <a class="btn" href={linkedin} rel="noopener">Contact me on LinkedIn<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <span class="creds-line">PMP · MCMP · CCMP · Prosci</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm" data-filter="all">
+      <div class="rm__bar">
+        <h2 class="rm__title">My roadmap, 2014 to today</h2>
+        <div class="chips" role="group" aria-label="Show workstream">
+          <button class="chip" type="button" data-lane="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-lane="public" aria-pressed="false" style="--c:var(--public)"><i></i>Public sector</button>
+          <button class="chip" type="button" data-lane="enterprise" aria-pressed="false" style="--c:var(--enterprise)"><i></i>Enterprise</button>
+          <button class="chip" type="button" data-lane="cred" aria-pressed="false" style="--c:var(--cred)"><i></i>Credentials</button>
+        </div>
+        <p class="swipe">Swipe the chart sideways to see 2014 to 2026. Tap any bar for details.</p>
+      </div>
+      <div class="rm__scroll">
+        <div class="rm__grid">
+          <div class="lane-name axis-name" aria-hidden="true"></div>
+          <div class="plot axis" aria-hidden="true">{years.slice(0, -1).map((y) => <span style={at(y)}>{y}</span>)}<div class="today" style={at(TODAY)}></div></div>
+
+          <div class="lane-name">Public sector<small>4 programs</small></div>
+          <div class="plot lane--public" data-plot>
+            <div class="today" style={at(TODAY)} aria-hidden="true"></div>
+            <p class="early">Before 2014: senior state and local government roles</p>
+            {bars.filter((b) => b.lane === 'public').map((b, i) => (
+              <button type="button" class={`bar bar--public`} style={`${pos(b.s, b.e)};--row:${b.row};--d:${i}`} data-id={b.id} data-s={b.s} data-e={b.e} data-lane="public" data-title={b.title} data-org={b.org} data-years={b.years} data-desc={b.desc} aria-pressed="false" aria-label={`${b.title}, ${b.org}, ${b.years}`}>{b.label}</button>
+            ))}
+          </div>
+
+          <div class="lane-name">Enterprise and consulting<small>7 roles</small></div>
+          <div class="plot lane--enterprise" data-plot>
+            <div class="today" style={at(TODAY)} aria-hidden="true"></div>
+            {bars.filter((b) => b.lane === 'enterprise').map((b, i) => (
+              <button type="button" class={`bar bar--enterprise${b.id === 'leidos' ? ' bar--out' : ''}`} style={`${pos(b.s, b.e)};--row:${b.row};--d:${i + 4}`} data-label={b.label} data-id={b.id} data-s={b.s} data-e={b.e} data-lane="enterprise" data-title={b.title} data-org={b.org} data-years={b.years} data-desc={b.desc} aria-pressed={b.id === first.id ? 'true' : 'false'} aria-label={`${b.title}, ${b.org}, ${b.years}`}>{b.label}</button>
+            ))}
+          </div>
+
+          <div class="lane-name">Credentials<small>10 certifications</small></div>
+          <div class="plot lane--cred" data-plot>
+            <div class="today today--tag" style={at(TODAY)}><em>Today, November 2026 · open to new roles</em></div>
+            {miles.map((m, i) => (
+              <button type="button" class={`mile${m.major ? '' : ' mile--minor'}`} style={`${at(m.t)};--d:${i}`} data-id={m.id} data-s={m.t} data-e={m.t + 0.08} data-lane="cred" data-title={m.title} data-org={m.org} data-years={m.when} data-desc={`Certification earned ${m.when}.`} aria-pressed="false" aria-label={`${m.title}, ${m.org}, ${m.when}`}><b></b>{m.label}</button>
+            ))}
+          </div>
+        </div>
+        <div class="rm__overlay" aria-hidden="true"></div>
+      </div>
+      <div class="detail" aria-live="polite">
+        <div class="detail__meta"><span class="detail__lane" style="--c:var(--enterprise)"><i></i><span data-f="lane">Enterprise and consulting</span></span><b data-f="years">{first.years}</b></div>
+        <div><h3 data-f="title">{first.title}</h3><div class="detail__org" data-f="org">{first.org}</div><p data-f="desc">{first.desc}</p></div>
+        <p class="hint">Move across the chart to scrub the years. Select any bar or diamond for details.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head"><h2>Work packages I deliver</h2><p>Five kinds of program, each one done for real organizations. Select an organization to find it on the roadmap.</p></div>
+      <div class="wbs">
+        {packages.map((p, i) => (
+          <div class="pkg">
+            <h3><span class="wbs-code">1.{i + 1}</span>{p.name}</h3>
+            <p>{p.does}</p>
+            <ul>{p.at.map(([id, name]) => <li><button type="button" class="tag" data-goto={id} style={`--c:var(--${bars.find((b) => b.id === id)?.lane ?? 'cred'})`}><i></i>{name}</button></li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="method" class="method">
+    <div class="wrap">
+      <div class="sec-head"><h2>How a program runs</h2><p>Four phases I have run in agencies and companies alike. Pick a phase to see what it produces.</p></div>
+      <div class="method__body">
+        <div>
+          <div class="phases" role="tablist" aria-label="Program phases">
+            {phases.map((p, i) => <button class="phase" type="button" role="tab" id={`tab-${p.id}`} aria-controls={`panel-${p.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}><span>{p.name}</span></button>)}
+          </div>
+          {phases.map((p, i) => (
+            <div class="phase-panel" role="tabpanel" id={`panel-${p.id}`} aria-labelledby={`tab-${p.id}`} hidden={i !== 0}>
+              <h3>{p.line}</h3>
+              <ul>{p.items.map((it) => <li>{it}</li>)}</ul>
+              <p class="seen">Done at {p.seen}</p>
+            </div>
+          ))}
+        </div>
+        <div class="method__photo"><img src={welders.src} srcset={welders.srcset} sizes={welders.sizes} width={welders.width} height={welders.height} alt="Pipeline workers in hard hats welding a joint on a large steel pipe" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="places">
+    <div class="wrap">
+      <div class="sec-head"><h2>Where the work happened</h2><p>State capitols, federal agencies and an enterprise headquarters, plus the school where I studied international business.</p></div>
+      <div class="places">
+        {places.map((pl, i) => (
+          <button type="button" class={`place${i === 0 ? ' is-open' : ''}`} data-goto={pl.bar || null} aria-label={`${pl.what}, ${pl.place}, ${pl.when}`}>
+            <img src={pl.img.src} srcset={pl.img.srcset} sizes={pl.img.sizes} width={pl.img.width} height={pl.img.height} alt={pl.alt} loading="lazy" decoding="async">
+            <span class="cap"><b>{pl.what}</b><span>{pl.place} · {pl.when}</span></span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="wrap">
+      <div class="sec-head"><h2>Certifications and languages</h2><p>Project management, change management and generative AI, earned between 2020 and 2025.</p></div>
+      <div class="cred-grid">
+        <ul class="certs">
+          <li><span><b>Master Change Management Professional (MCMP)</b><small>Association of Change Management Professionals</small></span><time>2025</time></li>
+          <li class="minor"><span><b>Practical Application of Gen AI for Project Managers</b><small>Project Management Institute</small></span><time>2025</time></li>
+          <li class="minor"><span><b>Data Landscape of GenAI for Project Managers</b><small>Project Management Institute</small></span><time>2025</time></li>
+          <li class="minor"><span><b>Generative AI Overview for Project Managers</b><small>Project Management Institute</small></span><time>2024</time></li>
+          <li><span><b>Change Management for Generative AI</b><small>Vanderbilt University</small></span><time>2024</time></li>
+          <li><span><b>Project Management Professional (PMP)</b><small>Project Management Institute, valid to 2029</small></span><time>2023</time></li>
+          <li class="minor"><span><b>Certified SAFe 5 Practitioner</b><small>Scaled Agile</small></span><time>2023</time></li>
+          <li><span><b>Certified Change Management Professional (CCMP)</b><small>Association of Change Management Professionals</small></span><time>2021</time></li>
+          <li><span><b>Integrating Agile and Change Management</b><small>Prosci</small></span><time>2020</time></li>
+          <li class="minor"><span><b>Certified Associate in Project Management (CAPM)</b><small>Project Management Institute</small></span><time></time></li>
+        </ul>
+        <div>
+          <div class="langs">
+            <h3>Languages</h3>
+            {langs.map((l) => (
+              <div class="lang"><b>{l.name}</b><span class="scale" role="img" aria-label={`${l.note}, ${l.level} of 5`}>{[1, 2, 3, 4, 5].map((n) => <i class={n <= l.level ? 'on' : ''}></i>)}</span><small>{l.note}</small></div>
+            ))}
+          </div>
+          <div class="edu">
+            <h3>Education</h3>
+            <p>Master’s in international business, Nyenrode Business University</p>
+            <p>Bachelor’s in education, City University of New York</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <!-- portrait slot: replace with Mona Bector's portrait (4:5) when supplied -->
+      <div class="portrait" role="img" aria-label="Monogram MB"><span aria-hidden="true">MB</span></div>
+      <div>
+        <h2 class="sr">About me</h2>
+        <blockquote>With over 25 years of experience managing large-scale operations, projects and programs in management consulting and the public sector, I have led strategic initiatives that improve systems and processes, and helped organizations build capacity and capability.</blockquote>
+        <div class="open"><b>Open to</b> Director of Business Transformation · Organizational Change Manager · Business Transformation Manager · Program Manager</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="contact">
+    <img src={plant.src} srcset={plant.srcset} sizes={plant.sizes} width={plant.width} height={plant.height} alt="" loading="lazy" decoding="async">
+    <div class="wrap">
+      <h2>The next bar on the roadmap could be yours</h2>
+      <p class="lead">Large public enterprises, regulated industries and the programs that keep them running: tell me what you are changing.</p>
+      <div class="next" aria-hidden="true"><span>2026</span><span>2027</span><span>2028</span><span>2029</span><div class="plan">Your transformation program</div></div>
+      <a class="btn" href={linkedin} rel="noopener">Contact me on LinkedIn<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mona Bector · Washington DC–Baltimore area</span>
+    <span>Sources: <a href={linkedin} rel="noopener">LinkedIn profile</a> and public press records</span>
+    <details><summary>Photographs via Wikimedia Commons</summary><ul>{credits.map(([who, lic, licUrl, src]) => <li>{who}, {licUrl ? <a href={licUrl} rel="noopener">{lic}</a> : lic}, <a href={src} rel="noopener">source</a></li>)}</ul></details>
+  </div>
+</footer>
+
+<script is:inline>
+(() => {
+  const rm = document.querySelector('.rm');
+  const plots = [...document.querySelectorAll('[data-plot]')];
+  const items = [...document.querySelectorAll('.rm .bar, .rm .mile')];
+  const lanes = { public: ['Public sector', 'var(--public)'], enterprise: ['Enterprise and consulting', 'var(--enterprise)'], cred: ['Credentials', 'var(--cred)'] };
+  const f = (k) => rm.querySelector(`[data-f="${k}"]`);
+  const select = (el, focus) => {
+    items.forEach((x) => x.setAttribute('aria-pressed', x === el ? 'true' : 'false'));
+    f('title').textContent = el.dataset.title; f('org').textContent = el.dataset.org;
+    f('years').textContent = el.dataset.years; f('desc').textContent = el.dataset.desc;
+    const [ln, c] = lanes[el.dataset.lane]; f('lane').textContent = ln; rm.querySelector('.detail__lane').style.setProperty('--c', c);
+    if (focus) el.focus({ preventScroll: true });
+  };
+  items.forEach((el) => {
+    el.addEventListener('click', () => select(el));
+    el.addEventListener('keydown', (e) => {
+      if (!['ArrowRight', 'ArrowLeft'].includes(e.key)) return;
+      e.preventDefault();
+      const sorted = [...items].sort((a, b) => a.dataset.s - b.dataset.s);
+      const i = sorted.indexOf(el) + (e.key === 'ArrowRight' ? 1 : -1);
+      if (sorted[i]) select(sorted[i], true);
+    });
+  });
+  // year cursor across all lanes
+  const grid = rm.querySelector('.rm__grid');
+  const cursor = document.createElement('div'); cursor.className = 'cursor'; cursor.innerHTML = '<span></span>';
+  const holder = document.createElement('div'); holder.className = 'rm__plots'; holder.style.cssText = 'position:absolute;inset:0;pointer-events:none';
+  grid.style.position = 'relative';
+  grid.appendChild(cursor);
+  const Y0 = 2014, SPAN = 13;
+  const move = (e) => {
+    const box = plots[0].getBoundingClientRect();
+    const x = e.clientX - box.left; if (x < 0 || x > box.width) { leave(); return; }
+    const yr = Y0 + (x / box.width) * SPAN;
+    cursor.style.left = (box.left - grid.getBoundingClientRect().left + x) + 'px';
+    cursor.style.opacity = 1; cursor.firstChild.textContent = Math.floor(yr);
+    items.forEach((it) => it.classList.toggle('is-hit', yr >= +it.dataset.s && yr < +it.dataset.e));
+  };
+  const leave = () => { cursor.style.opacity = 0; items.forEach((it) => it.classList.remove('is-hit')); };
+  if (matchMedia('(hover: hover)').matches) { grid.addEventListener('pointermove', move); grid.addEventListener('pointerleave', leave); }
+  // lane filter
+  rm.querySelectorAll('.chip').forEach((ch) => ch.addEventListener('click', () => {
+    rm.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', c === ch ? 'true' : 'false'));
+    rm.dataset.filter = ch.dataset.lane;
+  }));
+  // jump from packages and places to a bar
+  document.querySelectorAll('[data-goto]').forEach((b) => b.addEventListener('click', (e) => {
+    const id = b.dataset.goto; if (!id) return;
+    if (b.classList.contains('place') && !b.classList.contains('is-open')) return;
+    const el = items.find((x) => x.dataset.id === id); if (!el) return;
+    rm.dataset.filter = 'all'; rm.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', c.dataset.lane === 'all' ? 'true' : 'false'));
+    select(el);
+    document.getElementById('roadmap').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    setTimeout(() => el.focus({ preventScroll: true }), 500);
+  }));
+  // places accordion
+  const placesEls = [...document.querySelectorAll('.place')];
+  const open = (p) => placesEls.forEach((x) => x.classList.toggle('is-open', x === p));
+  placesEls.forEach((p) => {
+    p.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') open(p); });
+    p.addEventListener('focus', () => { if (p.matches(':focus-visible')) open(p); });
+    p.addEventListener('click', () => open(p));
+  });
+  // phase tabs
+  const tabs = [...document.querySelectorAll('.phase')];
+  const show = (t, focus) => {
+    tabs.forEach((x) => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });
+    if (focus) t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t));
+    t.addEventListener('keydown', (e) => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return;
+      e.preventDefault(); show(tabs[(i + d + tabs.length) % tabs.length], true);
+    });
+  });
+  // phones: start the chart at the recent years
+  const sc = rm.querySelector('.rm__scroll'); if (sc.scrollWidth > sc.clientWidth) sc.scrollLeft = sc.scrollWidth;
+})();
+</script>
+</body>
+</html>

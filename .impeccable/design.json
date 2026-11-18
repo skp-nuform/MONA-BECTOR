@@ -1,0 +1,482 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T09:01:31.689Z",
+  "title": "Design System: Mona Bector",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Graphite Ink",
+        "canonical": "oklch(23.0% 0.012 264.3)",
+        "tonalRamp": [
+          "oklch(15% 0.003 264.3)",
+          "oklch(25% 0.004 264.3)",
+          "oklch(35% 0.007 264.3)",
+          "oklch(45% 0.010 264.3)",
+          "oklch(58% 0.012 264.3)",
+          "oklch(70% 0.008 264.3)",
+          "oklch(82% 0.005 264.3)",
+          "oklch(95% 0.003 264.3)"
+        ]
+      },
+      "public": {
+        "role": "secondary",
+        "displayName": "Program Teal",
+        "canonical": "oklch(51.1% 0.086 186.4)",
+        "tonalRamp": [
+          "oklch(15% 0.022 186.4)",
+          "oklch(25% 0.029 186.4)",
+          "oklch(35% 0.048 186.4)",
+          "oklch(45% 0.067 186.4)",
+          "oklch(58% 0.080 186.4)",
+          "oklch(70% 0.057 186.4)",
+          "oklch(82% 0.034 186.4)",
+          "oklch(95% 0.022 186.4)"
+        ]
+      },
+      "enterprise": {
+        "role": "secondary",
+        "displayName": "Contract Ochre",
+        "canonical": "oklch(54.3% 0.123 61.8)",
+        "tonalRamp": [
+          "oklch(15% 0.031 61.8)",
+          "oklch(25% 0.041 61.8)",
+          "oklch(35% 0.068 61.8)",
+          "oklch(45% 0.095 61.8)",
+          "oklch(58% 0.115 61.8)",
+          "oklch(70% 0.082 61.8)",
+          "oklch(82% 0.049 61.8)",
+          "oklch(95% 0.031 61.8)"
+        ]
+      },
+      "cred": {
+        "role": "secondary",
+        "displayName": "Credential Cobalt",
+        "canonical": "oklch(48.8% 0.217 264.4)",
+        "tonalRamp": [
+          "oklch(15% 0.054 264.4)",
+          "oklch(25% 0.072 264.4)",
+          "oklch(35% 0.121 264.4)",
+          "oklch(45% 0.169 264.4)",
+          "oklch(58% 0.203 264.4)",
+          "oklch(70% 0.145 264.4)",
+          "oklch(82% 0.087 264.4)",
+          "oklch(95% 0.054 264.4)"
+        ]
+      },
+      "public-soft": {
+        "role": "secondary",
+        "displayName": "Teal Wash",
+        "canonical": "oklch(92.3% 0.024 186.9)",
+        "tonalRamp": [
+          "oklch(15% 0.006 186.9)",
+          "oklch(25% 0.008 186.9)",
+          "oklch(35% 0.013 186.9)",
+          "oklch(45% 0.018 186.9)",
+          "oklch(58% 0.022 186.9)",
+          "oklch(70% 0.016 186.9)",
+          "oklch(82% 0.009 186.9)",
+          "oklch(95% 0.006 186.9)"
+        ]
+      },
+      "enterprise-soft": {
+        "role": "secondary",
+        "displayName": "Ochre Wash",
+        "canonical": "oklch(92.5% 0.032 76.4)",
+        "tonalRamp": [
+          "oklch(15% 0.008 76.4)",
+          "oklch(25% 0.011 76.4)",
+          "oklch(35% 0.018 76.4)",
+          "oklch(45% 0.025 76.4)",
+          "oklch(58% 0.030 76.4)",
+          "oklch(70% 0.022 76.4)",
+          "oklch(82% 0.013 76.4)",
+          "oklch(95% 0.008 76.4)"
+        ]
+      },
+      "cred-soft": {
+        "role": "secondary",
+        "displayName": "Cobalt Wash",
+        "canonical": "oklch(91.9% 0.033 268.7)",
+        "tonalRamp": [
+          "oklch(15% 0.008 268.7)",
+          "oklch(25% 0.011 268.7)",
+          "oklch(35% 0.018 268.7)",
+          "oklch(45% 0.026 268.7)",
+          "oklch(58% 0.031 268.7)",
+          "oklch(70% 0.022 268.7)",
+          "oklch(82% 0.013 268.7)",
+          "oklch(95% 0.008 268.7)"
+        ]
+      },
+      "cred-night": {
+        "role": "secondary",
+        "displayName": "Night Cobalt",
+        "canonical": "oklch(74.3% 0.115 269.7)",
+        "tonalRamp": [
+          "oklch(15% 0.029 269.7)",
+          "oklch(25% 0.038 269.7)",
+          "oklch(35% 0.064 269.7)",
+          "oklch(45% 0.090 269.7)",
+          "oklch(58% 0.108 269.7)",
+          "oklch(70% 0.077 269.7)",
+          "oklch(82% 0.046 269.7)",
+          "oklch(95% 0.029 269.7)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Plotter Paper",
+        "canonical": "oklch(97.8% 0.003 128.5)",
+        "tonalRamp": [
+          "oklch(15% 0.001 128.5)",
+          "oklch(25% 0.001 128.5)",
+          "oklch(35% 0.002 128.5)",
+          "oklch(45% 0.003 128.5)",
+          "oklch(58% 0.004 128.5)",
+          "oklch(70% 0.003 128.5)",
+          "oklch(82% 0.002 128.5)",
+          "oklch(95% 0.001 128.5)"
+        ]
+      },
+      "grid": {
+        "role": "neutral",
+        "displayName": "Grid Line",
+        "canonical": "oklch(92.8% 0.006 128.5)",
+        "tonalRamp": [
+          "oklch(15% 0.001 128.5)",
+          "oklch(25% 0.002 128.5)",
+          "oklch(35% 0.003 128.5)",
+          "oklch(45% 0.004 128.5)",
+          "oklch(58% 0.005 128.5)",
+          "oklch(70% 0.004 128.5)",
+          "oklch(82% 0.002 128.5)",
+          "oklch(95% 0.001 128.5)"
+        ]
+      },
+      "grid-strong": {
+        "role": "neutral",
+        "displayName": "Grid Line Strong",
+        "canonical": "oklch(87.8% 0.007 132.4)",
+        "tonalRamp": [
+          "oklch(15% 0.002 132.4)",
+          "oklch(25% 0.002 132.4)",
+          "oklch(35% 0.004 132.4)",
+          "oklch(45% 0.006 132.4)",
+          "oklch(58% 0.007 132.4)",
+          "oklch(70% 0.005 132.4)",
+          "oklch(82% 0.003 132.4)",
+          "oklch(95% 0.002 132.4)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline Rule",
+        "canonical": "oklch(84.3% 0.009 134.9)",
+        "tonalRamp": [
+          "oklch(15% 0.002 134.9)",
+          "oklch(25% 0.003 134.9)",
+          "oklch(35% 0.005 134.9)",
+          "oklch(45% 0.007 134.9)",
+          "oklch(58% 0.009 134.9)",
+          "oklch(70% 0.006 134.9)",
+          "oklch(82% 0.004 134.9)",
+          "oklch(95% 0.002 134.9)"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.001 89.9)",
+          "oklch(25% 0.001 89.9)",
+          "oklch(35% 0.002 89.9)",
+          "oklch(45% 0.003 89.9)",
+          "oklch(58% 0.004 89.9)",
+          "oklch(70% 0.003 89.9)",
+          "oklch(82% 0.002 89.9)",
+          "oklch(95% 0.001 89.9)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Two",
+        "canonical": "oklch(38.1% 0.019 260.7)",
+        "tonalRamp": [
+          "oklch(15% 0.005 260.7)",
+          "oklch(25% 0.006 260.7)",
+          "oklch(35% 0.010 260.7)",
+          "oklch(45% 0.015 260.7)",
+          "oklch(58% 0.018 260.7)",
+          "oklch(70% 0.013 260.7)",
+          "oklch(82% 0.008 260.7)",
+          "oklch(95% 0.005 260.7)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Three",
+        "canonical": "oklch(49.4% 0.020 259.4)",
+        "tonalRamp": [
+          "oklch(15% 0.005 259.4)",
+          "oklch(25% 0.007 259.4)",
+          "oklch(35% 0.011 259.4)",
+          "oklch(45% 0.015 259.4)",
+          "oklch(58% 0.018 259.4)",
+          "oklch(70% 0.013 259.4)",
+          "oklch(82% 0.008 259.4)",
+          "oklch(95% 0.005 259.4)"
+        ]
+      },
+      "night-tab": {
+        "role": "neutral",
+        "displayName": "Night Tab",
+        "canonical": "oklch(30.1% 0.016 264.3)",
+        "tonalRamp": [
+          "oklch(15% 0.004 264.3)",
+          "oklch(25% 0.005 264.3)",
+          "oklch(35% 0.009 264.3)",
+          "oklch(45% 0.012 264.3)",
+          "oklch(58% 0.015 264.3)",
+          "oklch(70% 0.010 264.3)",
+          "oklch(82% 0.006 264.3)",
+          "oklch(95% 0.004 264.3)"
+        ]
+      },
+      "night-text": {
+        "role": "neutral",
+        "displayName": "Night Text",
+        "canonical": "#c3c8c0",
+        "tonalRamp": [
+          "oklch(15% 0.002 134.9)",
+          "oklch(25% 0.003 134.9)",
+          "oklch(35% 0.005 134.9)",
+          "oklch(45% 0.007 134.9)",
+          "oklch(58% 0.009 134.9)",
+          "oklch(70% 0.006 134.9)",
+          "oklch(82% 0.004 134.9)",
+          "oklch(95% 0.002 134.9)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero name only, in 600; the role line beneath drops to 300 (display-light)."
+      },
+      "display-light": {
+        "displayName": "Display Light",
+        "purpose": "Second line of the hero name."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section heads; the closing head runs to clamp(40px, 5.4vw, 80px)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Work-package names, detail-panel and phase-panel titles (22 to 30px)."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero lead and section intros in Ink Two."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose; 68ch max in panels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Bar labels, milestones, axis years, today and cursor tags."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Chips, tags, captions, issuers, dates."
+      }
+    },
+    "shadows": [
+      {
+        "name": "bar-halo",
+        "value": "0 0 0 2px #fff, 0 0 0 4px var(--c)",
+        "purpose": "Hovered or cursor-crossed roadmap bar, in its lane ink."
+      },
+      {
+        "name": "bar-selected",
+        "value": "0 0 0 2px #fff, 0 0 0 4px var(--ink)",
+        "purpose": "The bar shown in the detail panel."
+      },
+      {
+        "name": "focus",
+        "value": "outline: 2px solid var(--cred); outline-offset: 3px",
+        "purpose": "Global focus-visible ring."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "The single easing for all transitions and the load sequence."
+      },
+      {
+        "name": "state",
+        "value": "200ms to 300ms",
+        "purpose": "Hover, press, chip and tag state changes."
+      },
+      {
+        "name": "sweep",
+        "value": "450ms to 600ms",
+        "purpose": "Phase-tab cobalt fill, places accordion, work-package wash."
+      },
+      {
+        "name": "bar-draw",
+        "value": "900ms clip-path wipe, delay 250ms + 70ms per bar in schedule order",
+        "purpose": "Roadmap bars draw in once on load."
+      },
+      {
+        "name": "mile-pop",
+        "value": "500ms rise, delay 900ms + 60ms per diamond",
+        "purpose": "Milestone diamonds rise in once on load."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Load sequence never armed; all transitions and animations off; smooth scroll off; everything static and visible."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "860px"
+      },
+      {
+        "name": "phone",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action, Contact me on LinkedIn: solid graphite with a drawn arrow.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Contact me on LinkedIn<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h11M9 4l4 4-4 4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}:focus-visible{outline:2px solid var(--cred);outline-offset:3px}.ds-btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:var(--r);background:var(--ink);color:#fff;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap;transition:background .2s var(--ease),transform .2s var(--ease)}.ds-btn svg{width:16px;height:16px;transition:transform .25s var(--ease)}.ds-btn:hover{background:#000}.ds-btn:hover svg{transform:translateX(3px)}.ds-btn:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Inverse Button",
+      "kind": "button",
+      "refersTo": "button-primary-inverse",
+      "description": "The same action on the graphite closing band.",
+      "html": "<div class=\"ds-band\"><a class=\"ds-btn-inv\" href=\"#\">Contact me on LinkedIn<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h11M9 4l4 4-4 4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></div>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}:focus-visible{outline:2px solid var(--cred);outline-offset:3px}.ds-band{background:var(--ink);padding:24px}.ds-btn-inv{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:var(--r);background:#fff;color:var(--ink);font-weight:600;font-size:16px;text-decoration:none;transition:background .2s var(--ease)}.ds-btn-inv svg{width:16px;height:16px;transition:transform .25s var(--ease)}.ds-btn-inv:hover{background:#e9ecf3}.ds-btn-inv:hover svg{transform:translateX(3px)}"
+    },
+    {
+      "name": "Lane Chips",
+      "kind": "chip",
+      "refersTo": "chip-lane",
+      "description": "Filter the roadmap by workstream; the swatch names the lane.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">All</button><button class=\"ds-chip\" style=\"--c:var(--public)\"><i></i>Public sector</button><button class=\"ds-chip\" style=\"--c:var(--enterprise)\"><i></i>Enterprise</button><button class=\"ds-chip ds-chip--cred\" style=\"--c:var(--cred)\"><i></i>Credentials</button></div>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}:focus-visible{outline:2px solid var(--cred);outline-offset:3px}.ds-chips{display:flex;gap:8px;flex-wrap:wrap}.ds-chip{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--rule);border-radius:999px;background:#fff;font:500 14px \"Public Sans\",sans-serif;color:var(--ink-2);cursor:pointer;transition:border-color .2s,background .2s}.ds-chip i{width:10px;height:10px;border-radius:2px;background:var(--c,var(--ink))}.ds-chip--cred i{transform:rotate(45deg) scale(.85)}.ds-chip[aria-pressed=true]{border-color:var(--ink);color:var(--ink);background:#f1f2ef}.ds-chip:hover{border-color:var(--ink-3)}"
+    },
+    {
+      "name": "Organisation Tag",
+      "kind": "chip",
+      "refersTo": "tag-org",
+      "description": "Jump link from a work package to its bar on the roadmap.",
+      "html": "<button class=\"ds-tag\" style=\"--c:var(--public)\"><i></i>US EPA</button> <button class=\"ds-tag\" style=\"--c:var(--enterprise)\"><i></i>BAE Systems</button>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}:focus-visible{outline:2px solid var(--cred);outline-offset:3px}.ds-tag{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 11px;border-radius:4px;border:1px solid var(--rule);background:#fff;font:500 14px \"Public Sans\",sans-serif;color:var(--ink);cursor:pointer;transition:border-color .2s,transform .2s var(--ease)}.ds-tag i{width:9px;height:9px;border-radius:2px;background:var(--c)}.ds-tag:hover{border-color:var(--ink);transform:translateY(-1px)}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "description": "Sticky paper header: monogram, anchors with drawn underline, small action.",
+      "html": "<header class=\"ds-top\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-mono\">MB</span>Mona Bector</a><nav class=\"ds-nav\"><a href=\"#\">Roadmap</a><a href=\"#\">Work</a><a href=\"#\">Method</a></nav><a class=\"ds-btn-sm\" href=\"#\">Contact me on LinkedIn</a></header>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}:focus-visible{outline:2px solid var(--cred);outline-offset:3px}.ds-top{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;padding:0 20px;background:rgba(247,248,246,.94);border-bottom:1px solid var(--rule)}.ds-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-weight:600;font-size:17px}.ds-mono{display:grid;place-items:center;width:34px;height:34px;border-radius:5px;background:var(--ink);color:var(--paper);font-size:13px;font-weight:700}.ds-nav{display:flex;gap:28px;font-size:15px}.ds-nav a{text-decoration:none;color:var(--ink-2);padding:6px 0;background:linear-gradient(var(--ink),var(--ink)) left bottom/0 1px no-repeat;transition:background-size .3s var(--ease),color .2s}.ds-nav a:hover{color:var(--ink);background-size:100% 1px}.ds-btn-sm{display:inline-flex;align-items:center;height:40px;padding:0 14px;border-radius:var(--r);background:var(--ink);color:#fff;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap}.ds-btn-sm:hover{background:#000}"
+    },
+    {
+      "name": "Program Roadmap",
+      "kind": "custom",
+      "description": "Signature: lanes, lane-ink bars, milestone diamonds and a dashed today line on a framed white sheet.",
+      "html": "<div class=\"ds-rm\"><div class=\"ds-lane\"><div class=\"ds-ln\">Public sector<small>4 programs</small></div><div class=\"ds-plot\" style=\"height:60px\"><button class=\"ds-bar\" style=\"left:0;width:23%;--c:var(--public)\">NY State</button><button class=\"ds-bar\" style=\"left:62%;width:15%;--c:var(--public)\">Interior · PMO</button><div class=\"ds-today\"></div></div></div><div class=\"ds-lane\"><div class=\"ds-ln\">Enterprise<small>7 roles</small></div><div class=\"ds-plot\" style=\"height:60px\"><button class=\"ds-bar\" style=\"left:46%;width:23%;--c:var(--enterprise)\" aria-pressed=\"true\">BAE Systems</button><div class=\"ds-today\"></div></div></div><div class=\"ds-lane\"><div class=\"ds-ln\">Credentials<small>10</small></div><div class=\"ds-plot\" style=\"height:64px\"><button class=\"ds-mile\" style=\"left:30%\"><b></b>CCMP</button><button class=\"ds-mile ds-mile--minor\" style=\"left:47%\"><b></b>SAFe</button><button class=\"ds-mile\" style=\"left:72%\"><b></b>MCMP</button><div class=\"ds-today\"><em>Today · open to new roles</em></div></div></div></div>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}:focus-visible{outline:2px solid var(--cred);outline-offset:3px}.ds-rm{background:#fff;border:1.5px solid var(--ink);border-radius:2px}.ds-lane{display:grid;grid-template-columns:140px 1fr;border-top:1px solid var(--grid-strong)}.ds-lane:first-child{border-top:0}.ds-ln{padding:12px 16px;font-size:14px;font-weight:600;display:flex;flex-direction:column;gap:4px}.ds-ln small{font-weight:400;color:var(--ink-3);font-size:13px}.ds-plot{position:relative;background-image:linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:calc(100% / 13) 100%}.ds-bar{position:absolute;top:15px;height:30px;border:0;border-radius:4px;padding:0 9px;font:600 13px/30px \"Public Sans\",sans-serif;color:#fff;background:var(--c);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;cursor:pointer;transition:box-shadow .2s}.ds-bar:hover{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--c)}.ds-bar[aria-pressed=true]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ink)}.ds-mile{position:absolute;top:14px;transform:translateX(-50%);border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font:600 12px \"Public Sans\",sans-serif;color:var(--cred)}.ds-mile b{width:14px;height:14px;background:var(--cred);transform:rotate(45deg);border-radius:2px;transition:transform .25s var(--ease)}.ds-mile--minor b{width:10px;height:10px;background:#fff;border:2px solid var(--cred)}.ds-mile:hover b{transform:rotate(45deg) scale(1.35)}.ds-today{position:absolute;top:0;bottom:0;left:92%;border-left:2px dashed var(--ink);pointer-events:none}.ds-today em{position:absolute;bottom:6px;right:6px;font:600 12px \"Public Sans\",sans-serif;font-style:normal;background:var(--ink);color:#fff;padding:3px 7px;border-radius:3px;white-space:nowrap}"
+    },
+    {
+      "name": "Work-package Row",
+      "kind": "custom",
+      "description": "Ruled WBS table row: code and name, what it does, organisation tags; hover sweeps a faint wash.",
+      "html": "<div class=\"ds-wbs\"><div class=\"ds-pkg\"><h3><span class=\"ds-code\">1.1</span>Transformation PMO</h3><p>Set up and run the office that tracks every project, its owner, budget and risks.</p><span class=\"ds-t\" style=\"--c:var(--public)\"><i></i>Interior, BIA</span></div></div>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}.ds-wbs{border-top:2px solid var(--ink)}.ds-pkg{display:grid;grid-template-columns:4fr 5fr 3fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--rule);align-items:baseline;background:linear-gradient(90deg,rgba(26,29,35,.035),rgba(26,29,35,0)) left/0 100% no-repeat;transition:background-size .5s var(--ease)}.ds-pkg:hover{background-size:100% 100%}.ds-pkg h3{margin:0;font-size:24px;font-weight:600;letter-spacing:-.025em;display:flex;gap:16px;align-items:baseline}.ds-code{font-size:15px;font-weight:500;color:var(--ink-3);min-width:2.4em}.ds-pkg p{margin:0;color:var(--ink-2)}.ds-t{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 11px;border-radius:4px;border:1px solid var(--rule);font-size:14px;font-weight:500}.ds-t i{width:9px;height:9px;border-radius:2px;background:var(--c)}"
+    },
+    {
+      "name": "Phase Tabs",
+      "kind": "nav",
+      "refersTo": "phase-tab",
+      "description": "Tabs on the graphite band; the selected tab fills with cobalt from the left.",
+      "html": "<div class=\"ds-band\"><div class=\"ds-phases\" role=\"tablist\"><button class=\"ds-phase\" role=\"tab\" aria-selected=\"true\"><span>Assess</span></button><button class=\"ds-phase\" role=\"tab\" aria-selected=\"false\"><span>Align</span></button><button class=\"ds-phase\" role=\"tab\" aria-selected=\"false\"><span>Deliver</span></button><button class=\"ds-phase\" role=\"tab\" aria-selected=\"false\"><span>Embed</span></button></div></div>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}:focus-visible{outline:2px solid var(--cred);outline-offset:3px}.ds-band{background:var(--ink);padding:24px}.ds-phases{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.ds-phase{position:relative;height:56px;border:0;border-radius:4px;background:#2a2e36;color:#c3c8c0;font:600 16px \"Public Sans\",sans-serif;cursor:pointer;text-align:left;padding:0 16px;overflow:hidden;transition:color .2s}.ds-phase::before{content:\"\";position:absolute;inset:0;background:var(--cred);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}.ds-phase span{position:relative}.ds-phase[aria-selected=true]{color:#fff}.ds-phase[aria-selected=true]::before{transform:scaleX(1)}.ds-phase:hover{color:#fff}"
+    },
+    {
+      "name": "Places Accordion Panel",
+      "kind": "card",
+      "description": "Photo panel: greyscale multiplied over its lane ink when closed, full colour when open (photograph stood in by a gradient here).",
+      "html": "<div class=\"ds-places\"><div class=\"ds-place is-open\" style=\"--c:var(--public)\"><span class=\"ds-cap\"><b>New York State</b><span>Deputy Commissioner · 2014 – 2016</span></span></div><div class=\"ds-place\" style=\"--c:var(--public)\"><span class=\"ds-cap\"><b>US EPA</b></span></div><div class=\"ds-place\" style=\"--c:var(--enterprise)\"><span class=\"ds-cap\"><b>Leidos</b></span></div></div>",
+      "css": ":host{--paper:#f7f8f6;--grid:#e6e8e4;--grid-strong:#d5d8d3;--ink:#1a1d23;--ink-2:#3d434d;--ink-3:#5b626d;--public:#0f766e;--enterprise:#a15c07;--cred:#1d4ed8;--rule:#c9cdc7;--r:6px;--ease:cubic-bezier(.16,1,.3,1);font-family:\"Public Sans\",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink)}.ds-places{display:flex;gap:6px;height:260px}.ds-place{position:relative;flex:1;min-width:0;border-radius:8px;overflow:hidden;background:var(--c);transition:flex-grow .6s var(--ease);color:#fff}.ds-place.is-open{flex-grow:4;background:linear-gradient(160deg,#8aa2a0,#3d4a4a)}.ds-cap{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(10,12,16,.82));display:flex;flex-direction:column;gap:2px}.ds-cap b{font-size:20px;font-weight:600}.ds-cap span{font-size:14px;opacity:.88}.ds-place:not(.is-open) .ds-cap b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:18px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Program Roadmap Wall",
+    "overview": "The page is a transformation office's planning wall: a cool white sheet ruled with a faint plotter grid, graphite ink, and three workstream inks laid down as solid schedule bars. A career is not narrated; it is scheduled. Roles are bars on lanes, certifications are milestone diamonds, the present is a dashed \"today\" line, and the visitor reads it the way a sponsor reads a Gantt chart. Everything else on the page (work packages, phases, places, credentials) borrows the same instruments: WBS codes, hairline rules, lane-coloured swatches, diamonds.\n\nDensity is that of a working document, not a brochure. Sections are separated by generous air (120px) but inside each one the information is tight, tabular and ruled. The only liveliness comes from interaction: a year cursor scrubbing the chart, bars drawing in once in schedule order, lane filters, an accordion of places. Nothing moves for decoration.\n\nThe build rejects the executive-portfolio template: no headshot-headline-stat-row hero, no vertical timeline, no testimonial carousel, no employer logo wall.",
+    "keyCharacteristics": [
+      "Faint 24px plotter grid on cool paper as the ground of every light section; the same grid in white at 5% on the graphite method band.",
+      "Three lane inks with fixed meanings: teal is public sector, ochre is enterprise and consulting, cobalt is credentials and AI.",
+      "One typeface, Public Sans, with tabular figures everywhere so years and codes align.",
+      "Hairline rules and a 1.5px graphite frame instead of cards and shadows.",
+      "Photographs are duotone under a lane ink until chosen, then shown in full colour."
+    ],
+    "rules": [
+      {
+        "name": "The Lane Meaning Rule",
+        "body": "Teal, ochre and cobalt each mean one workstream and nothing else. A swatch, bar, diamond or photo ground in a lane ink always names that lane; never use them as general accents.",
+        "section": "colors"
+      },
+      {
+        "name": "The Graphite Action Rule",
+        "body": "The one action, \"Contact me on LinkedIn\", is always solid graphite on light ground and solid white on graphite ground. Lane inks never carry a call to action.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Every number on the page sits in tabular figures (set once on `:root`). Years, WBS codes and dates must align in columns.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Face Rule",
+        "body": "Public Sans carries everything; contrast comes from weight (300 against 600) and size, never from a second family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Line Not Lift Rule",
+        "body": "Separate surfaces with a rule, a frame or a ground change. If something needs to stand out, give it a heavier line, never a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do set every light section on the paper ground with the 24px grid (`--grid` lines at 1px).",
+      "Do keep the lane inks bound to their workstreams: teal public sector, ochre enterprise, cobalt credentials and AI.",
+      "Do mark certifications with the diamond: solid for major, outlined for minor.",
+      "Do separate with hairlines (`--rule`) and a 2px graphite rule at the head of any ruled list or table.",
+      "Do keep numbers in tabular figures and Public Sans only.",
+      "Do make every chart element a real button with a visible cobalt focus outline and arrow-key navigation.",
+      "Do treat photographs as greyscale under a lane ink until they are chosen.",
+      "Do make every animation optional: under reduced motion the page is static and complete."
+    ],
+    "donts": [
+      "Don't add drop shadows or elevated cards; use a frame, a rule or a ground change.",
+      "Don't use a lane ink as a general accent or for the call to action.",
+      "Don't introduce a second typeface or a monospace for figures.",
+      "Don't add a headshot-and-stat-row hero, a vertical timeline, testimonials or logo walls.",
+      "Don't soften corners beyond 10px or use pills for anything except lane chips."
+    ]
+  }
+}

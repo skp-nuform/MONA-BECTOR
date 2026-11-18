@@ -1,0 +1,117 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "files": [
+          "public/assets/objects/_print-core/demo.css"
+        ],
+        "createdAt": "2026-11-18T08:13:00.231Z",
+        "reason": "taste-skill kit demo fixture copied into public/assets; not used by index.astro, and the kit forbids editing its files"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "files": [
+          "public/assets/objects/_print-core/cards.html"
+        ],
+        "createdAt": "2026-11-18T08:13:00.502Z",
+        "reason": "taste-skill kit demo fixture copied into public/assets; not used by index.astro, and the kit forbids editing its files"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "public/assets/objects/_print-core/cards.html"
+        ],
+        "createdAt": "2026-11-18T08:13:00.716Z",
+        "reason": "taste-skill kit demo fixture copied into public/assets; not used by index.astro, and the kit forbids editing its files"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "public/assets/objects/product-render/views.html"
+        ],
+        "createdAt": "2026-11-18T08:13:00.959Z",
+        "reason": "taste-skill kit demo fixture copied into public/assets; not used by index.astro, and the kit forbids editing its files"
+      },
+      {
+        "rule": "overused-font",
+        "value": "*",
+        "files": [
+          "public/assets/objects/product-render/views.html"
+        ],
+        "createdAt": "2026-11-18T08:13:01.244Z",
+        "reason": "taste-skill kit demo fixture copied into public/assets; not used by index.astro, and the kit forbids editing its files"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "public/assets/objects/product-render/demo.html"
+        ],
+        "createdAt": "2026-11-18T08:13:01.497Z",
+        "reason": "taste-skill kit demo fixture copied into public/assets; not used by index.astro, and the kit forbids editing its files"
+      },
+      {
+        "rule": "overused-font",
+        "value": "*",
+        "files": [
+          "public/assets/objects/product-render/demo.html"
+        ],
+        "createdAt": "2026-11-18T08:13:01.739Z",
+        "reason": "taste-skill kit demo fixture copied into public/assets; not used by index.astro, and the kit forbids editing its files"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-18T08:40:10.486Z",
+        "reason": "decision-round sketch mock (spent hand under .impeccable/mocks), not shipped; build thread decision"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-18T08:40:10.745Z",
+        "reason": "decision-round sketch mock (spent hand under .impeccable/mocks), not shipped; build thread decision"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-18T09:02:19.960Z",
+        "reason": "spent decision-round sketch under .impeccable/mocks, drawn in its own direction's fonts; not shipped (build thread decision)"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-splitflap.html"
+        ],
+        "createdAt": "2026-11-18T09:02:20.267Z",
+        "reason": "spent decision-round sketch under .impeccable/mocks, drawn in its own direction's fonts; not shipped (build thread decision)"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-18T09:02:20.517Z",
+        "reason": "spent decision-round sketch under .impeccable/mocks, drawn in its own direction's fonts; not shipped (build thread decision)"
+      }
+    ]
+  },
+  "buildPath": "code"
+}
